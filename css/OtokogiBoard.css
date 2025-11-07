@@ -1,0 +1,195 @@
+/* OtokogiBoard.css ----------------------------------------------- */
+/* Designed by hinacoppy 2021-2025 -------------------------------- */
+
+/* bgboard decoration ---------------------------------------- */
+.container{
+  --boardHeightNum:99;
+  --boardWidthNum:70;
+  --boardWidth4Num:85; /* grid-template-columns の値に合わせる */
+  --boardWidth8Num:70;
+  --offtrayMarginNum:5; /* .offtrayのborderの -1 がちょうどよい */
+  --thumbBoardHeightNum:100;
+  --thumbBoardWidthNum:100;
+
+  --point-width:calc(var(--pointWidthNum) * 1vmax);
+  --point-height:calc(var(--boardHeightNum) * 1vmin * 0.7);
+  --thumb-point-width:calc(var(--thumbPointWidthNum) * 1vmax * 0.15);
+  --thumb-point-height:calc(var(--thumbBoardHeightNum) * 1vmin * 0.15);
+}
+/* Point num depend settings ---------------------- */
+.pointmax5{
+  --pointWidthNum:10.6; /* Otokogi5 */
+  --thumbPointWidthNum:16;
+}
+.pointmax6{
+  --pointWidthNum:9.6; /* Otokogi6 */
+  --thumbPointWidthNum:14;
+}
+.pointmax7{
+  --pointWidthNum:8.6; /* Otokogi7 */
+  --thumbPointWidthNum:12;
+}
+/* Main Board ------------------------------------- */
+.board{
+  position:relative;
+  width:var(--board-width);
+  height:var(--board-height);
+  background-color:var(--board-color);
+  --board-width:100%;
+  --board-height:100%;
+}
+.offtray{
+  position:absolute;
+  width:var(--point-width);
+  height:var(--offtray-height);
+  background-color:var(--offtray-color);
+  outline:var(--offtray-margin) solid;
+  bottom:0;
+  --offtray-height:var(--point-height);
+  --offtray-margin:calc((var(--offtrayMarginNum) + 1) * 1px);
+}
+.point{
+  position:absolute;
+  width:var(--point-width);
+  height:var(--point-height);
+  bottom:0;
+}
+.dice{
+  position:absolute;
+  font-size:var(--point-width);
+  width:var(--point-width);
+  height:var(--point-width);
+  z-index:30;
+}
+.chequer{
+  position:absolute;
+  width:var(--point-width);
+  height:var(--point-width);
+  clip-path:circle(50% at 50% 50%);
+}
+.border{ /* drop-shadowの影は一つ上のエレメントに掛ける */
+  filter:drop-shadow( 1px  1px gray)
+         drop-shadow(-1px  1px gray)
+         drop-shadow( 1px -1px gray)
+         drop-shadow(-1px -1px gray);
+}
+.dragging{
+  z-index:999; /* DOMのstyle内に定義されているため、この設定は無視される */
+  opacity:0.7;
+}
+.flash{
+  opacity:0.4;
+}
+
+/* Thumbnail Board ------------------------------------- */
+.thumbboard{
+  position:relative;
+  width:100%;
+  height:100%;
+  outline:2px solid;
+}
+.thumbofftray{
+  position:absolute;
+  width:var(--thumb-point-width);
+  height:var(--thumb-point-height);
+  outline:1px solid;
+  background-color:var(--offtray-color);
+}
+.thumbpoint{
+  position:absolute;
+  width:var(--thumb-point-width);
+  height:var(--thumb-point-height);
+}
+.thumbchecker{
+  position:absolute;
+  width:var(--thumb-point-width);
+  height:var(--thumb-point-width);
+  clip-path:circle(50% at 50% 50%);
+}
+.current{
+  background:var(--thumbboard-current);
+}
+.shitcurrent{
+  background:var(--thumbboard-shitcurrent);
+}
+
+/* Point Triangles ------------------------------------- */
+.pt_dnod{
+  clip-path:polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color:var(--triangle-odd);
+}
+.pt_dnev{
+  clip-path:polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color:var(--triangle-evn);
+}
+.pt_upod{
+  clip-path:polygon(0% 0%, 50% 100%, 0% 100%);
+  background-color:var(--triangle-odd);
+}
+.pt_upev{
+  clip-path:polygon(0% 0%, 50% 100%, 0% 100%);
+  background-color:var(--triangle-evn);
+}
+
+/* Board Object settings ------------------------------------- */
+.bearoff{
+  clip-path:ellipse(50% 15% at 50% 50%);
+}
+.turncolor{
+  background-color:var(--ckrcolor);
+}
+.diceface{
+  stroke:var(--dicepip);
+  fill:var(--diceface);
+}
+
+/* Board Color Configuration -------------------------------------*/
+:root{
+  --board-color:#bbb;
+  --triangle-odd:#502;
+  --triangle-evn:#205;
+  --offtray-color:#ccc;
+  --board-frame:#000;
+  --thumbboard-current:#0c0;
+  --thumbboard-shitcurrent:#800;
+}
+.boardStyle0{
+  --ckrcolor:#555;
+  --diceface:#555;
+  --dicepip:#fff;
+}
+.boardStyle1{
+  --ckrcolor:#33f;
+  --diceface:#33f;
+  --dicepip:#fff;
+}
+.boardStyle2{
+  --ckrcolor:#f33;
+  --diceface:#f33;
+  --dicepip:#fff;
+}
+.boardStyle3{
+  --ckrcolor:#3f3;
+  --diceface:#3f3;
+  --dicepip:#000;
+}
+.boardStyle4{
+  --ckrcolor:#f3f;
+  --diceface:#f3f;
+  --dicepip:#000;
+}
+.boardStyle5{
+  --ckrcolor:#3ff;
+  --diceface:#3ff;
+  --dicepip:#000;
+}
+.boardStyle6{
+  --ckrcolor:#ff3;
+  --diceface:#ff3;
+  --dicepip:#000;
+}
+.boardStyle7{
+  --ckrcolor:#fff;
+  --diceface:#fff;
+  --dicepip:#000;
+}

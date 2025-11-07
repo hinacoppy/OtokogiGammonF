@@ -1,0 +1,125 @@
+/* OtokogiGame.css ------------------------------------------------ */
+/* Designed by hinacoppy 2021-2025 -------------------------------- */
+
+/* Tag settings ------------------------------------- */
+*{
+  user-select:none; /* タップ、ドラッグで文字選択しないように */
+}
+input,select{
+  font-size:100%;
+}
+html{
+  height:100vmin;
+  overflow:hidden;
+  overscroll-behavior:none; /* バウンススクロールを抑止(only for Android) */
+}
+body{
+  margin:0;
+  padding:0;
+  min-height:100vmin;
+  height:100vmin;
+  font-family:'Arial', 'Meiryo UI';
+  background-color:#aaa;
+}
+@media screen and (orientation:portrait) {
+.article { /* 縦画面の時は横向きに表示し、横画面にするよう促す */
+  width:100vh;
+  height:100vw;
+  margin:-100vw 0 100vh;
+  transform:rotate(90deg);
+  transform-origin:left bottom;
+}}
+
+/* Grid Layout settings ------------------------------------- */
+/* 横画面基準の相対サイズにし、レスポンシブ対応可能にしておく */
+.container8{
+  position:relative; /* Settingボタンをabsoluteで配置するため */
+  display:grid; /* Grid Layout でコンテンツを配置 */
+  grid-template-columns:70vmax 15vmax 15vmax;
+  grid-template-rows:25vmin 25vmin 25vmin 25vmin;
+}
+.container4{
+  position:relative;
+  display:grid;
+  grid-template-columns:85vmax 15vmax 0vmax;
+  grid-template-rows:25vmin 25vmin 25vmin 25vmin;
+}
+#board{
+  grid-area:1/1/5/2;
+}
+#thumbboard0{
+  grid-area:1/2/2/3;
+}
+#thumbboard1{
+  grid-area:2/2/3/3;
+}
+#thumbboard2{
+  grid-area:3/2/4/3;
+}
+#thumbboard3{
+  grid-area:4/2/5/3;
+}
+#thumbboard4{
+  grid-area:1/3/2/4;
+}
+#thumbboard5{
+  grid-area:2/3/3/4;
+}
+#thumbboard6{
+  grid-area:3/3/4/4;
+}
+#thumbboard7{
+  grid-area:4/3/5/4;
+}
+#settingbtn{
+  position:absolute;
+  top:2vmax;
+  left:4vmax;
+  z-index:20;
+}
+#rollbtn{
+  position:absolute;
+  display:none;
+  z-index:20;
+}
+#doneundo{
+  position:absolute;
+  display:none;
+  z-index:20;
+}
+#youwin{
+  position:absolute;
+  display:none;
+  z-index:50;
+  font-size:15vmax;
+  color:#f00;
+}
+#settings{
+  position:absolute;
+  display:none;
+  z-index:99;
+  background-color:#dff;
+  border:3px solid #00f;
+  padding:2vmin 5vmax;
+  font-size:3vmax;
+}
+
+/* Button -------------------------------------*/
+.oparationbtn{
+  --bg-color:#bef;
+  --fg-color:#27f;
+  color:var(--fg-color);
+  border:3px solid var(--fg-color);
+  background-color:var(--bg-color);
+  border-radius:20px;
+  padding:2vmin 2vmax;
+  font-size:3vmax;
+  white-space:nowrap;
+}
+.oparationbtn:disabled {
+  --bg-color:#bbb;
+  --fg-color:#555;
+  color:var(--fg-color);
+  border-color:var(--fg-color);
+  background-color:var(--bg-color);
+}
